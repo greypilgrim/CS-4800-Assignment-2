@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Course
+class Instructor
+class TextBook
+Course "1" o--o "1..*" Instructor
+Course "1" o--o "1..*" TextBook
+
+/'Course class constructed a different way
+than others because of arraylist fields'/
+class Course{
+ +name: String[1]{id, readonly}
+ +ArrayList<Instructor> instructors
+ +ArrayList<TextBook> textBooks
+ +Course()
+ +setName(in name: String): void
+ +setInstructor(in instructor: Instructor): void
+ +setTextBook(in textBook: TextBook): void
+ +getName(): String
+ +getInstructors(): ArrayList<Instructor>
+ +getTextBooks(): ArrayList<TextBook>
+ +toString(): String
+ +printCourse(): String
+ }
+
+
+Instructor : +firstName: String[1]{id, readonly}
+Instructor : +lastName: String[1]{id, readonly}
+Instructor : +officeNumber: String[1]{readonly}
+Instructor : +setFirstName(in firstName: String): void
+Instructor : +setLastName(in lastName: String): void
+Instructor : +setOfficeNumber(in officeNumber: String): void
+Instructor : +getFirstName(): String
+Instructor : +getLastName(): String
+Instructor : +getOfficeNumber(): String
+Instructor : +toString(): String
+
+TextBook : +title: String[1]{id, readonly}
+TextBook : +author: String[1]{id, readonly}
+TextBook : +publisher: String[1]{id, readonly}
+TextBook : +setTitle(in title: String): void
+TextBook : +setAuthor(in author: String): void
+TextBook : +setPublisher(in publisher: String): void
+TextBook : +getTitle(): String
+TextBook : +getAuthor(): String
+TextBook : +getPublisher(): String
+TextBook : +toString(): String
+@enduml

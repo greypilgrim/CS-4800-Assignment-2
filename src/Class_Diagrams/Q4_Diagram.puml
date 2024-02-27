@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class File
+class Folder
+
+Folder "1" *-- "1..*" File
+
+/'Following the same creation style
+as the "Course" class in Q3 for
+simplicity and readability'/
+class File{
+ -name: String[1]{id, readonly}
+ +File(in name: String)
+ +setName(in name: String): void
+ +getName(): String
+ +toString(): String
+}
+
+class Folder{
+ -name: String[1]{id, readonly}
+ +ArrayList<Folder> subFolders
+ +ArrayList<File> files
+ +Folder()
+ +setName(in name: String): void
+ +getName(): String
+ +addSubFolder(in subFolderName: String): void
+ +removeSubFolder(in subFolderName: String): void
+ +getSubFolder(in subFolderName: String): Folder
+ +addFile(in fileName: String): void
+ +removeFile(in file: File): bool
+ +toString(): String
+ +printFolderContents(): void
+}
+
+@enduml
